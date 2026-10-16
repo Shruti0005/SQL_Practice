@@ -1,4 +1,3 @@
-
 -- 1. Departments table
 CREATE TABLE departments (
     department_id INT PRIMARY KEY,
