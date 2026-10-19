@@ -393,8 +393,207 @@ select *
 from employees 
 where (salary > 70000 or age < 25) and not department_id = 3;
 
-
 -- Employees older than 25 AND earning over 40,000, who live in Pune OR belong to department 3.
 select * 
 from employees 
 where age > 25 and salary > 40000 and (city = 'Pune' or department_id = 3);
+
+-- Employees in Hyderabad, Pune, or Mumbai.
+select * 
+from employees 
+where city in ('Hyderabad', 'Pune', 'Mumbai');
+
+-- Employees whose department ID is 1, 3, or 5.
+select * 
+from employees 
+where department_id in (1, 3, 5);
+
+-- Employees whose age is 24, 28, or 35.
+select * 
+from employees 
+where age in (24, 28, 35);
+
+-- Employees whose salary is 35,000, 50,000, or 75,000.
+select * 
+from employees 
+where salary in (35000, 50000, 75000);
+
+-- Employees not in Hyderabad, Pune, or Delhi.
+select * 
+from employees 
+where city not in ('Hyderabad', 'Pune', 'Delhi');
+
+-- Employees whose department ID is 2 or 4.
+select * 
+from employees 
+where department_id in (2, 4);
+
+-- Orders whose status is Completed or Pending.
+select * 
+from orders 
+where status in ('Completed', 'Pending');
+
+-- Customers in Chennai, Delhi, or Bengaluru.
+select * 
+from customers 
+where city in ('Chennai', 'Delhi', 'Bengaluru');
+
+-- Orders whose customer ID is 201, 203, 205, or 208.
+select * 
+from orders 
+where customer_id in (201, 203, 205, 208);
+
+-- Departments located in Mumbai, Delhi, or Bengaluru.
+select * 
+from departments 
+where location in ('Mumbai', 'Delhi', 'Bengaluru');
+
+-- Employees whose salary is between 40,000 and 70,000 inclusive.
+select * 
+from employees 
+where salary between 40000 and 70000;
+
+-- Employees whose age is between 25 and 30 inclusive.
+select * 
+from employees 
+where age between 25 and 30;
+
+-- Employees hired between 2020-01-01 and 2022-12-31 inclusive.
+select * 
+from employees 
+where hire_date between '2020-01-01' and '2022-12-31';
+
+-- Employees whose salary is between 30,000 and 50,000 inclusive.
+select * 
+from employees 
+where salary between 30000 and 50000;
+
+-- Employees whose employee ID is between 103 and 108 inclusive.
+select * 
+from employees 
+where employee_id between 103 and 108;
+
+-- Orders whose amount is between 2,000 and 6,000 inclusive.
+select * 
+from orders 
+where amount between 2000 and 6000;
+
+-- Orders placed between 2024-04-01 and 2024-06-30 inclusive.
+select * 
+from orders 
+where order_date between '2024-04-01' and '2024-06-30';
+
+-- Customers whose ID is between 203 and 207 inclusive.
+select * 
+from customers 
+where customer_id between 203 and 207;
+
+-- Customers who signed up during 2023.
+select * 
+from customers 
+where signup_date between '2023-01-01' and '2023-12-31';
+
+-- Employees whose age is not between 25 and 30 inclusive.
+select * 
+from employees 
+where age not between 25 and 30;
+
+-- Employees whose names start with A.
+select * 
+from employees 
+where employee_name like 'A%';
+
+-- Employees whose names end with a.
+select * 
+from employees 
+where employee_name like '%a';
+
+-- Employees whose names contain an.
+select * 
+from employees 
+where employee_name like '%an%';
+
+-- Employees whose names start with P.
+select * 
+from employees 
+where employee_name like 'P%';
+
+-- Employees whose names have a as the second character.
+select * 
+from employees 
+where employee_name like '_a%';
+
+-- Customers whose names start with R.
+select * 
+from customers 
+where customer_name like 'R%';
+
+-- Customers whose names end with a.
+select * 
+from customers 
+where customer_name like '%a';
+
+-- Customers whose names contain ar.
+select * 
+from customers 
+where customer_name like '%ar%';
+
+-- Departments whose names start with M.
+select * 
+from departments 
+where department_name like 'M%';
+
+-- Employees whose city names contain a.
+select * 
+from employees 
+where city like '%a%';
+
+-- Employees in Hyderabad, Mumbai, or Delhi earning between 40,000 and 80,000 inclusive.
+select * 
+from employees 
+where city in ('Hyderabad', 'Mumbai', 'Delhi') and salary between 40000 and 80000;
+
+-- Employees in department 1, 3, or 5 aged between 25 and 35 inclusive.
+select * 
+from employees 
+where department_id in (1, 3, 5) and age between 25 and 35;
+
+-- Employees whose names start with A, P, or S.
+select * 
+from employees 
+where employee_name like 'A%' or employee_name like 'P%' or employee_name like 'S%';
+
+-- Employees whose salary is not between 40,000 and 70,000 inclusive.
+select * 
+from employees 
+where salary not between 40000 and 70000;
+
+-- Orders with status Completed or Pending and amount between 2,000 and 6,000 inclusive.
+select * 
+from orders 
+where status in ('Completed', 'Pending') and amount between 2000 and 6000;
+
+-- Customers in Pune or Hyderabad whose names start with R, N, or V.
+select * 
+from customers 
+where city in ('Pune', 'Hyderabad') and (customer_name like 'R%' or customer_name like 'N%' or customer_name like 'V%');
+
+-- Employees whose names contain a and salary is between 40,000 and 75,000 inclusive.
+select * 
+from employees 
+where employee_name like '%a%' and salary between 40000 and 75000;
+
+-- Orders whose customer ID is between 201 and 205 inclusive and status is not Cancelled.
+select * 
+from orders 
+where customer_id between 201 and 205 and not status = 'Cancelled';
+
+-- Employees not in Delhi, Pune, or Chennai whose names end with a.
+select * 
+from employees 
+where city not in ('Delhi', 'Pune', 'Chennai') and employee_name like '%a';
+
+-- Employees in department 1, 2, or 3, earning over 40,000, whose names contain a.
+select * 
+from employees 
+where department_id in (1, 2, 3) and salary > 40000 and employee_name like '%a%';
