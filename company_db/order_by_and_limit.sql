@@ -229,3 +229,64 @@ from orders
 where amount > 2000 
 order by order_date desc, amount desc 
 limit 5;
+
+-- Unique employee city and age combinations, sorted by city.
+select distinct city, age 
+from employees 
+order by city;
+
+-- Unique order status and amount combinations, sorted by amount descending.
+select distinct status, amount 
+from orders 
+order by amount desc;
+
+-- Unique employee cities sorted alphabetically.
+select distinct city 
+from employees 
+order by city asc;
+
+-- Unique customer cities sorted alphabetically, limited to three rows.
+select distinct city 
+from customers 
+order by city asc 
+limit 3;
+
+-- Unique employee department IDs sorted ascending.
+select distinct department_id 
+from employees 
+order by department_id asc;
+
+-- Unique order statuses sorted alphabetically.
+select distinct status 
+from orders 
+order by status asc;
+
+-- Unique employee city and department ID combinations, sorted by city then department ID.
+select distinct city, department_id 
+from employees 
+order by city, department_id;
+
+-- Unique order status and amount combinations, sorted by status then amount descending.
+select distinct status, amount 
+from orders 
+order by status asc, amount desc;
+
+-- Employee name as employee and salary as pay, sorted by pay descending.
+select employee_name as employee, salary as pay 
+from employees 
+order by pay desc;
+
+-- Customer name as customer, city as location, signup date as joined_on, sorted newest to oldest.
+select customer_name as customer, city as location, signup_date as joined_on 
+from customers 
+order by joined_on desc;
+
+-- Unique customer ID and order status combinations, sorted by customer ID then status.
+select distinct customer_id, status 
+from orders 
+order by customer_id, status;
+
+-- Unique employee city and age combinations, alias city as location and age as employee_age, sorted by location then employee_age descending.
+select distinct city as location, age as employee_age 
+from employees 
+order by location asc, employee_age desc;
