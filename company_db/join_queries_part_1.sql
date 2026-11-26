@@ -470,3 +470,228 @@ from customers c inner join orders o
 on c.customer_id = o.customer_id 
 order by o.order_date desc;
 
+-- Display all employee names and their department names, including employees without a department.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id;
+
+-- Display all employee IDs, employee names, and department locations.
+select e.employee_id, e.employee_name, d.location 
+from employees e left join departments d 
+on e.department_id = d.department_id;
+
+-- Display all department names and the employees working in each department, including departments without employees.
+select d.department_name, e.employee_name 
+from departments d left join employees e 
+on d.department_id = e.department_id;
+
+-- Display all employees with their department IDs and department names.
+select e.employee_name, e.department_id, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id;
+
+-- Display all employees and their department locations.
+select e.employee_name, d.location 
+from employees e left join departments d 
+on e.department_id = d.department_id;
+
+-- Display all departments and their department IDs along with employee names.
+select d.department_name, d.department_id, e.employee_name 
+from departments d left join employees e 
+on d.department_id = e.department_id;
+
+-- Display all employees, their salaries, and department names, sorted by employee name.
+select e.employee_name, e.salary, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+order by e.employee_name;
+
+-- Display all employees and their department names where the employee's city is Pune.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+where e.city = 'Pune';
+
+-- Display all employees and department names for employees whose salary is greater than 50,000.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+where e.salary > 50000;
+
+-- Display all employees and their department names, sorted by department name in ascending order.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+order by d.department_name;
+
+
+-- Find employees who do not belong to any department.
+select e.employee_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+where d.department_name is null;
+
+-- Find departments that do not have any employees.
+select d.department_name 
+from departments d left join employees e 
+on d.department_id = e.department_id 
+where e.employee_name is null;
+
+-- Find all customers, including customers who have never placed an order.
+select c.customer_name 
+from customers c left join orders o 
+on c.customer_id = o.customer_id; 
+
+-- Find customers who have never placed an order.
+select c.customer_name 
+from customers c left join orders o 
+on c.customer_id = o.customer_id 
+where o.order_id is null; 
+
+-- Display all customers and their order IDs, including customers without orders.
+select c.customer_name, o.order_id 
+from customers c left join orders o 
+on c.customer_id = o.customer_id;
+
+-- Find orders that do not have a matching customer. (Use LEFT JOIN from orders to customers.)
+select o.order_id 
+from orders o left join customers c 
+on o.customer_id = c.customer_id 
+where c.customer_id is null;
+
+-- Display all employees and their department names, but show only employees who have no matching department.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+where d.department_name is null;
+
+-- Display all departments and employee names, but show only departments that have no employees.
+select d.department_name, e.employee_name 
+from departments d left join employees e 
+on d.department_id = e.department_id 
+where e.employee_id is null;
+
+-- Display all customers and their order amounts, but show only customers who have no orders.
+select c.customer_name, o.amount 
+from customers c left join orders o 
+on c.customer_id = o.customer_id 
+where o.order_id is null;
+
+-- Display all customers with their order IDs and statuses, including customers without orders.
+select c.customer_id, o.order_id, o.status 
+from customers c left join orders o 
+on c.customer_id = o.customer_id;
+
+
+-- Display all employees and department names, including employees without departments, sorted by salary descending.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+order by e.salary desc;
+
+-- Display all employees and department names where employee age is greater than 25.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+where e.age > 25;
+
+-- Display all customers and their order amounts for orders greater than 3,000. Keep customers without orders in the result.
+select c.customer_name, o.amount 
+from customers c left join orders o 
+on c.customer_id = o.customer_id and o.amount > 3000;
+
+-- Display all customers and their order statuses, including customers without orders. Show only Completed orders when a matching order exists.
+select c.customer_name, o.status 
+from customers c left join orders o 
+on c.customer_id = o.customer_id and o.status = 'Completed';
+
+-- Display all departments and their employees, including departments without employees, sorted by department name.
+select d.department_name, e.employee_name 
+from departments d left join employees e 
+on d.department_id = e.department_id 
+order by department_name;
+
+-- Display all employees and their department locations, including employees without departments, where employee salary is greater than 40,000.
+select e.employee_name, d.location 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+where e.salary > 40000;
+
+-- Display all customers and their order dates, including customers without orders, for orders placed after 1 April 2024.
+select c.customer_name, o.order_date 
+from customers c left join orders o 
+on c.customer_id = o.customer_id and o.order_date > '2024-04-01';
+
+-- Display all customers and their orders, including customers without orders, where the order status is Pending or no order exists.
+select c.customer_name, o.order_id 
+from customers c left join orders o 
+on c.customer_id = o.customer_id and o.status = 'Pending';
+
+-- Display all employees and their department names, including employees without departments, for employees hired after 1 January 2022.
+select e.employee_name, d.department_name 
+from employees e left join departments d 
+on e.department_id = d.department_id and e.hire_date > '2022-01-01';
+
+-- Display all departments and employee names, including departments without employees, where the department location is Mumbai.
+select d.department_name, e.employee_name 
+from departments d left join employees e 
+on d.department_id = e.department_id and d.location = 'Mumbai';
+
+
+-- Display employee names, department names, and department locations, including employees without departments.
+select e.employee_name, d.department_name, d.location 
+from employees e left join departments d 
+on e.department_id = d.department_id;
+
+-- Display all customers with their order IDs, amounts, and statuses, including customers without orders.
+select c.customer_name, o.order_id, o.amount, o.status 
+from customers c left join orders o 
+on c.customer_id = o.customer_id;
+
+-- Find customers who have not placed any orders.
+select c.customer_name 
+from customers c left join orders o 
+on c.customer_id = o.customer_id 
+where o.order_id is null;
+
+-- Find departments that currently have no employees.
+select d.department_name 
+from departments d left join employees e 
+on d.department_id = e.department_id 
+where e.employee_id is null;
+
+-- Display all employees with their department names and department locations, including employees without departments, sorted by salary from highest to lowest.
+select e.employee_name, d.department_name, d.location 
+from employees e left join departments d 
+on e.department_id = d.department_id 
+order by salary desc;
+
+-- Display all customers and their orders, including customers without orders, and sort by customer name.
+select c.customer_name, o.order_id 
+from customers c left join orders o 
+on c.customer_id = o.customer_id 
+order by customer_name;
+
+-- Display all departments and their employees, including departments without employees, where the department location is either Pune or Mumbai.
+select d.department_name, e.employee_name 
+from departments d left join employees e 
+on d.department_id = e.department_id and d.location in ('Pune', 'Mumbai');
+
+-- Display all customers and their order amounts, including customers without orders, where the order amount is between 2,000 and 6,000 or no order exists.
+select c.customer_name, o.amount
+from customers c left join orders o 
+on c.customer_id = o.customer_id and amount between 2000 and 6000 or o.order_id is null;
+
+-- Display all employees and their department names. Show employees without departments and sort them first, followed by employees with departments.
+select e.employee_name, d.department_name
+from employees e left join departments d 
+on e.department_id = d.department_id 
+order by
+    case when d.department_id is null then 0 else 1 end, 
+    e.employee_name;
+
+-- Display all customers, their order IDs, order dates, amounts, and statuses, including customers who have never placed an order.
+select c.customer_name, o.order_id, o.order_date, o.amount, o.status 
+from customers c left join orders o 
+on c.customer_id = o.customer_id;
+
